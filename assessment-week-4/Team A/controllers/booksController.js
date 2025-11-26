@@ -1,9 +1,11 @@
 let books = require("../ddddddatadatatlllBoBoo/s BOOKS */
 
+
 exports.getAllBooks = (req, res) => {
     res.json(books);
 };
 
+//Success did this
 /* GET A SINGLE BOOK BY ID */
 
 exports.getBookById = (req, res) => {
@@ -17,6 +19,7 @@ exports.getBookById = (req, res) => {
 };
 
 
+// Ismail did this
 
 //POST ... create a new book
 exports.createBook = (req, res) => {
