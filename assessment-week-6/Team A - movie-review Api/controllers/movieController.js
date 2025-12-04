@@ -94,25 +94,3 @@ exports.getMovieStats = (req, res) => {
     res.status(200).json({ movieId, numberOfReviews, averageStars: averageStars.toFixed(2) });
 }
 
-exports.createMovie = (req, res) => {
-    const newMovie = {
-        id: generateId(results),
-        title: req.body.title,
-        genre: req.body.genre,
-        year: req.body.year,
-        rating: req.body.rating || 0,
-        slug: `${String(req.body.title).toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}-${req.body.year}`
-    };
-    results.push(newMovie);
-    res.status(201).json(newMovie);
-}
-
-exports.deleteMovie = (req, res) => {
-    const movieId = parseInt(req.params.id);
-    const initialLength = results.length;
-    results.splice(results.findIndex(m => m.id === movieId), 1);
-    if (results.length === initialLength) {
-        return res.status(404).json({ message: 'Movie not found' });
-    }
-    res.status(204).json({ message: 'Movie deleted successfully' });
-}
