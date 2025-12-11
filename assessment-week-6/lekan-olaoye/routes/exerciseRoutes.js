@@ -3,7 +3,7 @@ const router = express.Router();
 const c = require("../controllers/exerciseController");
 const validate = require("../middleware/validate");
 
-// simple exercise validator
+// Basic validator for incoming exercise payloads
 function exerciseValidator(body) {
   if (!body.name) return { error: "name required" };
   if (!["strength", "cardio", "flexibility"].includes(body.category))
@@ -14,8 +14,10 @@ function exerciseValidator(body) {
   return { error: null };
 }
 
+// Routes for exercises resource
 router.get("/", c.getAll);
 router.get("/:id", c.getOne);
+// Validate request body on create
 router.post("/", validate(exerciseValidator), c.create);
 router.put("/:id", c.update);
 router.patch("/:id", c.update);

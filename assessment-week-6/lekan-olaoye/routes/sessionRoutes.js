@@ -13,6 +13,7 @@ function sessionValidator(body) {
 
 router.get("/", c.getAll);
 router.get("/:id", c.getOne);
+// Validate body and ensure exercise exists in controller
 router.post("/", validate(sessionValidator), c.create);
 router.delete("/:id", c.delete);
 
